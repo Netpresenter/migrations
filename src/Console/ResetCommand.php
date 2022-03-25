@@ -56,11 +56,6 @@ class ResetCommand extends BaseCommand
         $schema = $this->connection->getSchemaManager();
 
         $tables = $schema->listTableNames();
-        foreach ($tables as $s) {
-            $schema->dropTable($s);
-        }
-
-        $tables = $schema->listTableNames();
         foreach ($tables as $table) {
             $foreigns = $schema->listTableForeignKeys($table);
             foreach ($foreigns as $f) {
